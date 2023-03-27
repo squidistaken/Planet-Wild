@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28495922aa6723b40878495c51b7f9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractorSource: {fileID: 443163977}
+  InteractorSource: {fileID: 21558646}
   InteractRange: 10
 --- !u!1 &443163975
 GameObject:
