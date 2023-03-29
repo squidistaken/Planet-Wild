@@ -15,11 +15,16 @@ public class PlayerInteract : MonoBehaviour
     public Transform InteractorSource;
     // Range to interact from
     public float InteractRange = 10;
-    
+
+    public GameObject journal;
+    public GameObject Crossair;
+
+    public bool IsInteracting = false;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsInteracting)
         {
             // Ray = Infinite light starting at origin and going in some direction.
             // Ray is created from interactor source position and is forward.
@@ -33,8 +38,28 @@ public class PlayerInteract : MonoBehaviour
                 {
                     // Interact method
                     interactObj.Interact();
+                    Crossair.SetActive(false); //hides cusor
+                    OpenJournal(); //opens journal
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
+                    
                 }
             }
         }
+    }
+
+    public void OpenJournal()
+    {
+        journal.SetActive(true); //open journal
+        Cursor.visible = true; //show cursor
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public GameObject Player;
+
+    public void DisablePlayerControls()
+    {
+        this.gameObject.GetComponent<MouseLook>().enabled = false;
+        Player.GetComponent<PlayerMovement>().enabled = false;
     }
 }
