@@ -19,10 +19,10 @@ public class JournalPaintable : MonoBehaviour
 			if (Physics.Raycast(Ray, out hit))
 			{
 				//instanciate a brush
-				var go = Instantiate(Brush, hit.point + Vector3.forward * 0.1f, Quaternion.identity, transform);
+				var go = Instantiate(Brush, hit.point + Vector3.forward * 0.1f, Quaternion.Euler(-90, 0, 0), transform);
 				
 				// TODO: Set Z angle to be zero always.
-				go.transform.rotation = Quaternion.Euler(-90, 0, 0);
+
 				go.transform.localScale = Vector3.one * BrushSize;
 			}
 		}
