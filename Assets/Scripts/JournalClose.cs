@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloseJournal : MonoBehaviour
+public class JournalClose : MonoBehaviour
 {
     public GameObject Crossair;
     private void Start()
@@ -11,14 +11,6 @@ public class CloseJournal : MonoBehaviour
     }
 
     public PlayerInteract playerInteract;
-
-    void Update()
-    {
-       if(Input.GetKey("q")) //close journal
-        {
-            closeJournal();
-        }
-    }
 
     public void closeJournal()
     {
