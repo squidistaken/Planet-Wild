@@ -1,17 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Dynamic;
 using System.IO;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
+// In the future, we should probably rewrite this to be more efficient.
 public class JournalPaintable : MonoBehaviour
 {
 	public GameObject Brush;
 	public float BrushSize = 0.1f;
 	public Camera Camera;
 	public RenderTexture RTexture;
-	private bool resetDrawing;
 
 	// TODO: Delete the cloned objects when saving image or closing journal.
 
@@ -48,8 +45,6 @@ public class JournalPaintable : MonoBehaviour
 		//write data to file
 		var data = texture2D.EncodeToPNG();
 		File.WriteAllBytes(Application.dataPath + "/savedImage.png", data);
-
-		resetDrawing = true;
 	}
 
 }
