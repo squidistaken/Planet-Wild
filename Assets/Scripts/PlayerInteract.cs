@@ -42,7 +42,6 @@ public class PlayerInteract : MonoBehaviour
                     OpenJournal(); //opens journal
                     DisablePlayerControls(); //disables the players movement and 
                     IsInteracting = true;
-                    
                 }
             }
         }
