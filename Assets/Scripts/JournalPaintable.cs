@@ -20,7 +20,7 @@ public class JournalPaintable : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(Ray, out hit))
 			{
-				var go = Instantiate(Brush, hit.point + Vector3.forward * 0.1f, Quaternion.identity, transform); // Instantiate object
+				var go = Instantiate(Brush, hit.point + Vector3.up * 0.1f, Quaternion.identity, transform); // Instantiate object
 				go.transform.localScale = Vector3.one * BrushSize; // Creating objects
 			}
 		}

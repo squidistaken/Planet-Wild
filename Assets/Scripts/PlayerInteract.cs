@@ -38,7 +38,9 @@ public class PlayerInteract : MonoBehaviour
                 {
                     // Interact method
                     interactObj.Interact();
-                    Crossair.SetActive(false); //hides cusor
+
+                    // TODO: Migrate to Interaction.cs maybe?
+                    Crossair.SetActive(false); //hides cursor
                     OpenJournal(); //opens journal
                     DisablePlayerControls(); //disables the players movement and 
                     IsInteracting = true;
