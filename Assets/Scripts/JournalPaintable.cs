@@ -2,6 +2,9 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 
+// Credit: Marcus
+// Sourced and modified from: https://youtu.be/DCD8Pt1zf4c
+
 // In the future, we should probably rewrite this to be more efficient.
 public class JournalPaintable : MonoBehaviour
 {
@@ -24,7 +27,6 @@ public class JournalPaintable : MonoBehaviour
 				go.transform.localScale = Vector3.one * BrushSize; // Creating objects
 			}
 		}
-
 	}
 
 	public void Save()

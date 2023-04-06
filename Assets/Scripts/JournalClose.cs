@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Credit: Stan
 public class JournalClose : MonoBehaviour
 {
     public GameObject Crossair;

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Source: https://youtu.be/K06lVKiY-sY
+// Credit: Marcus
+// Sourced and modified from: https://youtu.be/K06lVKiY-sY
 
 // Inheritable interface.
 interface IInteractable
@@ -38,16 +39,12 @@ public class PlayerInteract : MonoBehaviour
                 {
                     // Interact method
                     interactObj.Interact();
-
-                    // TODO: Migrate to Interaction.cs maybe?
-                    Crossair.SetActive(false); //hides cursor
-                    OpenJournal(); //opens journal
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
                 }
             }
         }
     }
+
+    // Credit: Stan
 
     public void OpenJournal()
     {
