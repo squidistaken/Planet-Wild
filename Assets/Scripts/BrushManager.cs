@@ -5,8 +5,8 @@ using UnityEngine;
 public class BrushManager : MonoBehaviour
 {
 	public GameObject brushPrefab;
-
 	BrushInitialize activeBrush;
+	public Camera drawingCamera;
 
 	void Update()
 	{
@@ -23,7 +23,7 @@ public class BrushManager : MonoBehaviour
 
 		if (activeBrush != null)
 		{
-			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector2 mousePos = drawingCamera.ScreenToWorldPoint(Input.mousePosition);
 			activeBrush.UpdateLine(mousePos);
 		}
 	}

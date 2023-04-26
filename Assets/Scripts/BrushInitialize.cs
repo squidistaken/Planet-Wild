@@ -6,7 +6,6 @@ using System.Linq;
 public class BrushInitialize : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-
     List<Vector2> points;
 
     public void UpdateLine(Vector2 position)
