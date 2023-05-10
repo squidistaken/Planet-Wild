@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8111676775732559337}
   - component: {fileID: 9211386498294828162}
-  - component: {fileID: 3984533289330505949}
+  - component: {fileID: 3246072054268172953}
   m_Layer: 0
   m_Name: Brush
-  m_TagString: Untagged
+  m_TagString: Drawing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &3984533289330505949
+--- !u!114 &3246072054268172953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

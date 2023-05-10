@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+// Credit: Marcus
+
 public class BrushInitialize : MonoBehaviour
 {
     public LineRenderer lineRenderer;
