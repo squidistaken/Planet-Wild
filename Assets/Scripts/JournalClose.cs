@@ -5,9 +5,13 @@ using UnityEngine;
 // Credit: Stan
 public class JournalClose : MonoBehaviour
 {
+    private BrushManager brushManager;
+    
     public GameObject Crossair;
     private void Start()
     {
+        brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
+        
         this.gameObject.SetActive(false);
     }
 
@@ -15,6 +19,7 @@ public class JournalClose : MonoBehaviour
 
     public void closeJournal()
     {
+        brushManager.ClearLines();
         this.gameObject.SetActive(false);
         Crossair.SetActive(true); //shows cusor
         EnablePlayerControls(); //enables player controls
