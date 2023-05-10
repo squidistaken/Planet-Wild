@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class BrushManager : MonoBehaviour
 {
-	public GameObject brushPrefab;
 	BrushInitialize activeBrush;
+
+	public GameObject brushPrefab;
 	public Camera drawingCamera;
 	private GameObject[] clonedBrushes;
 
@@ -47,7 +48,7 @@ public class BrushManager : MonoBehaviour
 
 		foreach (GameObject brush in clonedBrushes)
 		{
-			GameObject.Destroy(brush);
+			Destroy(brush);
 		}
 	}
 
