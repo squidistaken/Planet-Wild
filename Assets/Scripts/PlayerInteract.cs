@@ -21,25 +21,49 @@ public class PlayerInteract : MonoBehaviour
     public GameObject Crossair;
 
     public bool IsInteracting = false;
+    
+    //Credit: Stan
+    public GameObject ItemPosition;
+    public GameObject PickedUpItem = null;
+    public bool IsHoldingItem = false;
+    public GameObject ItemCollection;
 
     // Update is called once per frame
     void Update()
-    {
+    {    
         if (Input.GetMouseButtonDown(0) && !IsInteracting)
         {
             // Ray = Infinite light starting at origin and going in some direction.
             // Ray is created from interactor source position and is forward.
             Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+            
+            if (IsHoldingItem)
+            {
+                PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                IsHoldingItem = false;
+                PickedUpItem.transform.parent = ItemCollection.transform;
+            }
 
             // If the raycast hits an object
             if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
             {
+                if (hitInfo.collider.tag == "Item" && !IsHoldingItem)
+                { 
+                    hitInfo.transform.parent = ItemPosition.transform;
+                    hitInfo.transform.localPosition = Vector3.zero;
+                    hitInfo.rigidbody.isKinematic = true;
+                    PickedUpItem = hitInfo.transform.gameObject;
+                    IsHoldingItem = true;
+                }
+ 
+                //Credit: Marcus               
                 // Collision attempt
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
                     // Interact method
                     interactObj.Interact();
 
+                    // Credit: Stan
                     // TODO: Make this indepedent of this script.
                     Crossair.SetActive(false); //hides cursor
                     OpenJournal(); //opens journal
@@ -50,7 +74,7 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    // Credit: Stan
+    
 
     public void OpenJournal()
     {
