@@ -30,7 +30,7 @@ public class PlayerInteract : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {    
+    {
         if (Input.GetMouseButtonDown(0) && !IsInteracting)
         {
             // Ray = Infinite light starting at origin and going in some direction.
@@ -48,7 +48,7 @@ public class PlayerInteract : MonoBehaviour
             if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
             {
                 if (hitInfo.collider.tag == "Item" && !IsHoldingItem)
-                { 
+                {
                     hitInfo.transform.parent = ItemPosition.transform;
                     hitInfo.transform.localPosition = Vector3.zero;
                     hitInfo.rigidbody.isKinematic = true;
