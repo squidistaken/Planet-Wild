@@ -27,6 +27,10 @@ public class PlayerInteract : MonoBehaviour
     public GameObject PickedUpItem = null;
     public bool IsHoldingItem = false;
     public GameObject ItemCollection;
+    public Transform Camera;
+
+    public float dropForwardForce = 1f;
+    public float dropUpForce = 1f;
 
     // Update is called once per frame
     void Update()
@@ -40,6 +44,8 @@ public class PlayerInteract : MonoBehaviour
             if (IsHoldingItem)
             {
                 PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.forward * dropForwardForce, ForceMode.Impulse);
+                PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.up * dropUpForce, ForceMode.Impulse);
                 IsHoldingItem = false;
                 PickedUpItem.transform.parent = ItemCollection.transform;
             }
