@@ -17,7 +17,7 @@ public class BrushManager : MonoBehaviour
 
 	void Update()
 	{
-		// Casting a ray to the plane
+		// Casting a ray to the plane (one with brush manager)
 		var Ray = drawingCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
@@ -30,6 +30,7 @@ public class BrushManager : MonoBehaviour
 			}	
 		}
 
+		// or statement is for if the brushes leaves the plane
 		if (Input.GetMouseButtonUp(0) || !Physics.Raycast(Ray, out hit))
 		{
 			activeBrush = null;
@@ -57,6 +58,7 @@ public class BrushManager : MonoBehaviour
 		StartCoroutine(CoSave());
 	}
 
+	// TODO: Save images in their own dedicated folder (or downloads?), and also make sure they can be referenced...
 	private IEnumerator CoSave()
 	{
 		yield return new WaitForEndOfFrame(); // Waiting until end of frame to render
