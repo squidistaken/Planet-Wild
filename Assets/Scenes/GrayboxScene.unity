@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 21558644}
   - component: {fileID: 21558643}
   - component: {fileID: 21558647}
+  - component: {fileID: 21558648}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -439,7 +440,24 @@ MonoBehaviour:
   PickedUpItem: {fileID: 0}
   IsHoldingItem: 0
   ItemCollection: {fileID: 2006404489}
+  Camera: {fileID: 21558646}
+  dropForwardForce: 10
+  dropUpForce: 8
   Player: {fileID: 443163975}
+--- !u!114 &21558648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21558641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af4548e8c6b5f740bee934ca6e5763c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingBobbingSpeed: 15
+  bobbingAmount: 0.1
 --- !u!1001 &32069847
 PrefabInstance:
   m_ObjectHideFlags: 0
