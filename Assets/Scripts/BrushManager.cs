@@ -15,6 +15,8 @@ public class BrushManager : MonoBehaviour
 	public Camera renderCamera;
 	public RenderTexture RTexture;
 
+	private int layerCount;
+
 	void Update()
 	{
 		// Casting a ray to the plane (one with brush manager)
@@ -27,6 +29,8 @@ public class BrushManager : MonoBehaviour
 			{
 				GameObject newLine = Instantiate(brushPrefab, hit.transform);
 				activeBrush = newLine.GetComponent<BrushInitialize>();
+
+				layerCount++;
 			}	
 		}
 
@@ -34,12 +38,14 @@ public class BrushManager : MonoBehaviour
 		if (Input.GetMouseButtonUp(0) || !Physics.Raycast(Ray, out hit))
 		{
 			activeBrush = null;
+			
 		}
 
 		if (activeBrush != null)
 		{
 			Vector2 mousePos = drawingCamera.ScreenToWorldPoint(Input.mousePosition);
 			activeBrush.UpdateLine(mousePos);
+			activeBrush.lineRenderer.sortingOrder = layerCount;
 		}
 	}
 
@@ -50,6 +56,7 @@ public class BrushManager : MonoBehaviour
 		foreach (GameObject brush in clonedBrushes)
 		{
 			Destroy(brush);
+			layerCount = 0;
 		}
 	}
 
