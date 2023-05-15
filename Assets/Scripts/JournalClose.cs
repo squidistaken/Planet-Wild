@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Stan
 public class JournalClose : MonoBehaviour
@@ -11,8 +12,6 @@ public class JournalClose : MonoBehaviour
     private void Start()
     {
         brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
-        
-        this.gameObject.SetActive(false);
     }
 
     public PlayerInteract playerInteract;
@@ -20,7 +19,9 @@ public class JournalClose : MonoBehaviour
     public void closeJournal()
     {
         brushManager.ClearLines();
-        this.gameObject.SetActive(false);
+        // this.gameObject.SetActive(false);
+
+        SceneManager.UnloadSceneAsync("DrawingScene");
         Crossair.SetActive(true); //shows cusor
         EnablePlayerControls(); //enables player controls
         Cursor.visible = false; //hides cursor

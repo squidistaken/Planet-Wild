@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Marcus
 // Sourced and modified from: https://youtu.be/K06lVKiY-sY
@@ -84,7 +85,9 @@ public class PlayerInteract : MonoBehaviour
 
     public void OpenJournal()
     {
-        journal.SetActive(true); //open journal
+
+        // journal.SetActive(true); //open journal
+        SceneManager.LoadScene("DrawingScene", LoadSceneMode.Additive);
         Cursor.visible = true; //show cursor
         Cursor.lockState = CursorLockMode.None;
     }
