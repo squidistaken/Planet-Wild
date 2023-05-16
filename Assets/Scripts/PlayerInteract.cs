@@ -33,8 +33,15 @@ public class PlayerInteract : MonoBehaviour
     public float dropForwardForce = 1f;
     public float dropUpForce = 1f;
 
-    // Update is called once per frame
-    void Update()
+    private GameManager gameManager;
+
+	private void Start()
+	{
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         if (Input.GetMouseButtonDown(0) && !IsInteracting)
         {
@@ -87,7 +94,9 @@ public class PlayerInteract : MonoBehaviour
     {
 
         // journal.SetActive(true); //open journal
-        SceneManager.LoadScene("DrawingScene", LoadSceneMode.Additive);
+        gameManager.LoadScene("DrawingScene", true);
+        gameManager.UnloadScene("POVScene");
+
         Cursor.visible = true; //show cursor
         Cursor.lockState = CursorLockMode.None;
     }

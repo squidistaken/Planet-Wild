@@ -7,11 +7,14 @@ using UnityEngine.SceneManagement;
 public class JournalClose : MonoBehaviour
 {
     private BrushManager brushManager;
+    private GameManager gameManager;
     
     public GameObject Crossair;
     private void Start()
     {
         brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     public PlayerInteract playerInteract;
@@ -19,9 +22,11 @@ public class JournalClose : MonoBehaviour
     public void closeJournal()
     {
         brushManager.ClearLines();
-        // this.gameObject.SetActive(false);
 
-        SceneManager.UnloadSceneAsync("DrawingScene");
+        gameManager.UnloadScene("DrawingScene");
+        gameManager.LoadScene("POVScene", true);
+
+
         Crossair.SetActive(true); //shows cusor
         EnablePlayerControls(); //enables player controls
         Cursor.visible = false; //hides cursor
