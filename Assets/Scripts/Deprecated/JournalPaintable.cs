@@ -6,6 +6,10 @@ using UnityEngine;
 // Sourced and modified from: https://youtu.be/DCD8Pt1zf4c
 
 // In the future, we should probably rewrite this to be more efficient.
+
+// DEPRECATED
+
+
 public class JournalPaintable : MonoBehaviour
 {
 	public GameObject Brush;

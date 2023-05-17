@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Marcus
 // Sourced and modified from: https://youtu.be/K06lVKiY-sY
@@ -17,9 +18,6 @@ public class PlayerInteract : MonoBehaviour
     // Range to interact from
     public float InteractRange = 10;
 
-    public GameObject journal;
-    public GameObject Crossair;
-
     public bool IsInteracting = false;
     
     //Credit: Stan
@@ -32,8 +30,15 @@ public class PlayerInteract : MonoBehaviour
     public float dropForwardForce = 1f;
     public float dropUpForce = 1f;
 
-    // Update is called once per frame
-    void Update()
+    private GameManager gameManager;
+
+	private void Start()
+	{
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         if (Input.GetMouseButtonDown(0) && !IsInteracting)
         {
@@ -48,17 +53,12 @@ public class PlayerInteract : MonoBehaviour
                 // Collision attempt
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj) && !IsHoldingItem)
                 {
-                    // Interact method
-                    interactObj.Interact();
+					interactObj.Interact();
+					IsInteracting = true;
+					gameManager.LoadDrawing();
+				}
 
-                // Credit: Stan
-                // TODO: Make this indepedent of this script.
-                    Crossair.SetActive(false); //hides cursor
-                    OpenJournal(); //opens journal
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
-                }
-
+                // Object reference does not exist @Stan
                 if (hitInfo.transform.parent.tag == "Animal" && IsHoldingItem)
                 {
                     Debug.Log("consumed item");
@@ -103,22 +103,5 @@ public class PlayerInteract : MonoBehaviour
             }
 
         }
-    }
-
-    
-
-    public void OpenJournal()
-    {
-        journal.SetActive(true); //open journal
-        Cursor.visible = true; //show cursor
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    public GameObject Player;
-
-    public void DisablePlayerControls()
-    {
-        this.gameObject.GetComponent<MouseLook>().enabled = false;
-        Player.GetComponent<PlayerMovement>().enabled = false;
     }
 }

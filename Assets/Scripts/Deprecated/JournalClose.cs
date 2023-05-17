@@ -1,26 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Stan
+
+// DEPRECATED SCRIPT
+
 public class JournalClose : MonoBehaviour
 {
     private BrushManager brushManager;
+    private GameManager gameManager;
     
     public GameObject Crossair;
     private void Start()
     {
         brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
-        
-        this.gameObject.SetActive(false);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     public PlayerInteract playerInteract;
 
+
+    // todo: move to gamemanager
     public void closeJournal()
     {
         brushManager.ClearLines();
-        this.gameObject.SetActive(false);
+
+        gameManager.UnloadScene("DrawingScene");
+        gameManager.LoadScene("POVScene", true);
+
+
         Crossair.SetActive(true); //shows cusor
         EnablePlayerControls(); //enables player controls
         Cursor.visible = false; //hides cursor
