@@ -18,9 +18,6 @@ public class PlayerInteract : MonoBehaviour
     // Range to interact from
     public float InteractRange = 10;
 
-    public GameObject journal;
-    public GameObject Crossair;
-
     public bool IsInteracting = false;
     
     //Credit: Stan
@@ -56,17 +53,12 @@ public class PlayerInteract : MonoBehaviour
                 // Collision attempt
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj) && !IsHoldingItem)
                 {
-                    // Interact method
-                    interactObj.Interact();
+					interactObj.Interact();
+					IsInteracting = true;
+					gameManager.LoadDrawing();
+				}
 
-                // Credit: Stan
-                // TODO: Make this indepedent of this script.
-                    Crossair.SetActive(false); //hides cursor
-                    OpenJournal(); //opens journal
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
-                }
-
+                // Object reference does not exist @Stan
                 if (hitInfo.transform.parent.tag == "Animal" && IsHoldingItem)
                 {
                     Debug.Log("consumed item");
@@ -107,22 +99,6 @@ public class PlayerInteract : MonoBehaviour
                     PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.up * dropUpForce, ForceMode.Impulse);
                     IsHoldingItem = false;
                     PickedUpItem.transform.parent = ItemCollection.transform;
-                    // Interact method
-                    interactObj.Interact();
-					IsInteracting = true;
-                    gameManager.LoadDrawing();
-
-                    // eventual todo: move the load drawing into the interact script, if needed
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
                 }
             }
 
