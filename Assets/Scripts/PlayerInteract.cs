@@ -76,20 +76,25 @@ public class PlayerInteract : MonoBehaviour
                 {
                     // Interact method
                     interactObj.Interact();
+					IsInteracting = true;
+                    gameManager.LoadDrawing();
 
+                    
+
+                    /* 
                     // Credit: Stan
                     // TODO: Make this indepedent of this script.
                     Crossair.SetActive(false); //hides cursor
                     OpenJournal(); //opens journal
                     DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true;
+                    IsInteracting = true; */
                 }
             }
         }
     }
 
     
-
+    /*
     public void OpenJournal()
     {
 
@@ -108,4 +113,5 @@ public class PlayerInteract : MonoBehaviour
         this.gameObject.GetComponent<MouseLook>().enabled = false;
         Player.GetComponent<PlayerMovement>().enabled = false;
     }
+    */
 }

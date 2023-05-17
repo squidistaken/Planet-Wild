@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Credit: Stan
+/*
 public class JournalClose : MonoBehaviour
 {
     private BrushManager brushManager;
@@ -19,6 +20,8 @@ public class JournalClose : MonoBehaviour
 
     public PlayerInteract playerInteract;
 
+
+    // todo: move to gamemanager
     public void closeJournal()
     {
         brushManager.ClearLines();
@@ -42,3 +45,4 @@ public class JournalClose : MonoBehaviour
         Player.GetComponent<PlayerMovement>().enabled = true;
     }
 }
+*/

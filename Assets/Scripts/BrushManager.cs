@@ -3,7 +3,6 @@ using System.IO;
 using UnityEngine;
 
 // Credit: Marcus
-
 public class BrushManager : MonoBehaviour
 {
 	BrushInitialize activeBrush;
@@ -79,5 +78,13 @@ public class BrushManager : MonoBehaviour
 		//write data to file
 		var data = texture2D.EncodeToPNG();
 		File.WriteAllBytes(Application.dataPath + "/savedImage.png", data);
+	}
+
+	private GameManager gameManager;
+
+	public void UnloadDrawingUI()
+	{
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		gameManager.UnloadDrawing();
 	}
 }
