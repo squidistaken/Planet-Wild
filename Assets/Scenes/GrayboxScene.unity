@@ -1597,6 +1597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Squirrel02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
 --- !u!1001 &376112573
@@ -9341,7 +9345,7 @@ GameObject:
   - component: {fileID: 1994440150}
   m_Layer: 0
   m_Name: Animals
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
