@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 154371747}
   - component: {fileID: 154371746}
   - component: {fileID: 154371745}
-  - component: {fileID: 154371749}
   m_Layer: 5
   m_Name: DrawingUI
   m_TagString: Untagged
@@ -507,22 +506,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &154371749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154371744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a7863aaf5cf5e4992176f6548ab1dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Crossair: {fileID: 0}
-  playerInteract: {fileID: 0}
-  Player: {fileID: 0}
-  MainCamera: {fileID: 0}
 --- !u!1 &258202360
 GameObject:
   m_ObjectHideFlags: 0

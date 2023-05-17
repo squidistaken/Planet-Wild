@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Credit: Stan
-/*
+
+// DEPRECATED SCRIPT
+
 public class JournalClose : MonoBehaviour
 {
     private BrushManager brushManager;
@@ -45,4 +47,3 @@ public class JournalClose : MonoBehaviour
         Player.GetComponent<PlayerMovement>().enabled = true;
     }
 }
-*/

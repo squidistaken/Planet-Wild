@@ -79,39 +79,9 @@ public class PlayerInteract : MonoBehaviour
 					IsInteracting = true;
                     gameManager.LoadDrawing();
 
-                    
-
-                    /* 
-                    // Credit: Stan
-                    // TODO: Make this indepedent of this script.
-                    Crossair.SetActive(false); //hides cursor
-                    OpenJournal(); //opens journal
-                    DisablePlayerControls(); //disables the players movement and 
-                    IsInteracting = true; */
+                    // eventual todo: move the load drawing into the interact script, if needed
                 }
             }
         }
     }
-
-    
-    /*
-    public void OpenJournal()
-    {
-
-        // journal.SetActive(true); //open journal
-        gameManager.LoadScene("DrawingScene", true);
-        gameManager.UnloadScene("POVScene");
-
-        Cursor.visible = true; //show cursor
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    public GameObject Player;
-
-    public void DisablePlayerControls()
-    {
-        this.gameObject.GetComponent<MouseLook>().enabled = false;
-        Player.GetComponent<PlayerMovement>().enabled = false;
-    }
-    */
 }
