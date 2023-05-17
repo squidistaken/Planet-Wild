@@ -48,40 +48,84 @@ public class PlayerInteract : MonoBehaviour
             // Ray = Infinite light starting at origin and going in some direction.
             // Ray is created from interactor source position and is forward.
             Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-            
-            if (IsHoldingItem)
-            {
-                PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
-                PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.forward * dropForwardForce, ForceMode.Impulse);
-                PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.up * dropUpForce, ForceMode.Impulse);
-                IsHoldingItem = false;
-                PickedUpItem.transform.parent = ItemCollection.transform;
-            }
 
             // If the raycast hits an object
             if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
             {
+                //Credit: Marcus               
+                // Collision attempt
+                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj) && !IsHoldingItem)
+                {
+                    // Interact method
+                    interactObj.Interact();
+
+                // Credit: Stan
+                // TODO: Make this indepedent of this script.
+                    Crossair.SetActive(false); //hides cursor
+                    OpenJournal(); //opens journal
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
+                }
+
+                if (hitInfo.transform.parent.tag == "Animal" && IsHoldingItem)
+                {
+                    Debug.Log("consumed item");
+                    Destroy(PickedUpItem);
+                    IsHoldingItem = false;
+                }
+
+                if (IsHoldingItem)
+                {
+                    Debug.Log("threw item");
+                    //Drop item 
+                    PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                    PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.forward * dropForwardForce, ForceMode.Impulse);
+                    PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.up * dropUpForce, ForceMode.Impulse);
+                    IsHoldingItem = false;
+                    PickedUpItem.transform.parent = ItemCollection.transform;
+                }
+
                 if (hitInfo.collider.tag == "Item" && !IsHoldingItem)
                 {
+                    //pickup item
                     hitInfo.transform.parent = ItemPosition.transform;
                     hitInfo.transform.localPosition = Vector3.zero;
                     hitInfo.rigidbody.isKinematic = true;
                     PickedUpItem = hitInfo.transform.gameObject;
                     IsHoldingItem = true;
                 }
- 
-                //Credit: Marcus               
-                // Collision attempt
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+            
+            }
+            else
+            {
+                if (IsHoldingItem)
                 {
+                    Debug.Log("threw item false");
+                    //Drop item 
+                    PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                    PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.forward * dropForwardForce, ForceMode.Impulse);
+                    PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.up * dropUpForce, ForceMode.Impulse);
+                    IsHoldingItem = false;
+                    PickedUpItem.transform.parent = ItemCollection.transform;
                     // Interact method
                     interactObj.Interact();
 					IsInteracting = true;
                     gameManager.LoadDrawing();
 
                     // eventual todo: move the load drawing into the interact script, if needed
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
+                    DisablePlayerControls(); //disables the players movement and 
+                    IsInteracting = true;
                 }
             }
+
         }
     }
 }

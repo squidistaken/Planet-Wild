@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Drawing
+  - Animal
   layers:
   - Default
   - TransparentFX
