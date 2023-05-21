@@ -59,25 +59,44 @@ public class BrushManager : MonoBehaviour
 		}
 	}
 
+	public string animalName = "InsertName";
+
 	public void Save()
 	{
-		StartCoroutine(CoSave());
+		StartCoroutine(SaveDrawing(animalName));
 	}
 
 	// TODO: Save images in their own dedicated folder (or downloads?), and also make sure they can be referenced...
-	private IEnumerator CoSave()
+	private IEnumerator SaveDrawing(string fileName)
 	{
 		yield return new WaitForEndOfFrame(); // Waiting until end of frame to render
+
 		RenderTexture.active = RTexture; // set Active texture to RTexture
 
 		// convert rendering texture to texture2D
-		var texture2D = new Texture2D(RTexture.width, RTexture.height);
-		texture2D.ReadPixels(new Rect(0, 0, RTexture.width, RTexture.height), 0, 0);
-		texture2D.Apply();
+		var screenshotTexture = new Texture2D(RTexture.width, RTexture.height);
+		Rect rect = new Rect(0, 0, RTexture.width, RTexture.height);
+
+		screenshotTexture.ReadPixels(rect, 0, 0);
+		screenshotTexture.Apply();
 
 		//write data to file
-		var data = texture2D.EncodeToPNG();
-		File.WriteAllBytes(Application.dataPath + "/savedImage.png", data);
+		byte[] byteArray = screenshotTexture.EncodeToPNG();
+
+		string filepath = Application.dataPath + "/MyDrawings";
+		fileName = "/" + fileName + ".png";
+
+		// Creating the folder if it doesn't already exist.
+		if (!Directory.Exists(filepath))
+		{
+			Directory.CreateDirectory(Application.dataPath + "/MyDrawings");
+			File.WriteAllBytes(filepath + fileName, byteArray);
+		}
+		else
+		{
+			File.WriteAllBytes(filepath + fileName, byteArray);
+		}
+		
 	}
 
 	private GameManager gameManager;
