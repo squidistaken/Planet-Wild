@@ -53,9 +53,8 @@ public class PlayerInteract : MonoBehaviour
                 // Collision attempt
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj) && !IsHoldingItem)
                 {
-					interactObj.Interact();
 					IsInteracting = true;
-					gameManager.LoadDrawing();
+					interactObj.Interact();
 				}
 
                 // Object reference does not exist @Stan
