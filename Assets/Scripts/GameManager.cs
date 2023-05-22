@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
-	public string animalName;
+	public static string animalName;
 
 	private void Start()
 	{
@@ -40,12 +40,17 @@ public class GameManager : MonoBehaviour
 
 	#region Drawing Manager
 
+	// todo: rewrite for events
+	public static bool loadScreenshot;
+
 	public void LoadDrawing(string selectedAnimal)
 	{
 		animalName = selectedAnimal;
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
 		UnloadScene("POVScene");
+		ScreenCapture.CaptureScreenshot(Application.dataPath + "/TemporaryScreenshot.png");
 		LoadScene("DrawingScene", true);
+		loadScreenshot = true;
 	}
 
 	private BrushManager brushManager;
@@ -58,6 +63,7 @@ public class GameManager : MonoBehaviour
 		brushManager.ClearLines();
 		UnloadScene("DrawingScene");
 		LoadScene("POVScene", true);
+		loadScreenshot = false;
 	}
 
 	#endregion
