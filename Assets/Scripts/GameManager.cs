@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
+	public string animalName;
 
 	private void Start()
 	{
@@ -39,11 +40,10 @@ public class GameManager : MonoBehaviour
 
 	#region Drawing Manager
 
-	public void LoadDrawing()
+	public void LoadDrawing(string selectedAnimal)
 	{
+		animalName = selectedAnimal;
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
-			
-
 		UnloadScene("POVScene");
 		LoadScene("DrawingScene", true);
 	}

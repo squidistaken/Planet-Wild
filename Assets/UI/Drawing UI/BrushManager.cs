@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Marcus
 public class BrushManager : MonoBehaviour
@@ -16,9 +18,12 @@ public class BrushManager : MonoBehaviour
 
 	private int layerCount;
 
+	private string selectedAnimal;
+
+	private GameManager gameManager;
+
 	void Update()
 	{
-		// Casting a ray to the plane (one with brush manager)
 		var Ray = drawingCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
@@ -61,30 +66,49 @@ public class BrushManager : MonoBehaviour
 
 	public void Save()
 	{
-		StartCoroutine(CoSave());
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		selectedAnimal = gameManager.animalName;
+
+		StartCoroutine(SaveDrawing(selectedAnimal));
 	}
 
-	// TODO: Save images in their own dedicated folder (or downloads?), and also make sure they can be referenced...
-	private IEnumerator CoSave()
+	private IEnumerator SaveDrawing(string fileName)
 	{
 		yield return new WaitForEndOfFrame(); // Waiting until end of frame to render
+
 		RenderTexture.active = RTexture; // set Active texture to RTexture
 
 		// convert rendering texture to texture2D
-		var texture2D = new Texture2D(RTexture.width, RTexture.height);
-		texture2D.ReadPixels(new Rect(0, 0, RTexture.width, RTexture.height), 0, 0);
-		texture2D.Apply();
+		var screenshotTexture = new Texture2D(RTexture.width, RTexture.height);
+		Rect rect = new Rect(0, 0, RTexture.width, RTexture.height);
+
+		screenshotTexture.ReadPixels(rect, 0, 0);
+		screenshotTexture.Apply();
 
 		//write data to file
-		var data = texture2D.EncodeToPNG();
-		File.WriteAllBytes(Application.dataPath + "/savedImage.png", data);
-	}
+		byte[] byteArray = screenshotTexture.EncodeToPNG();
 
-	private GameManager gameManager;
+		string filepath = Application.dataPath + "/MyDrawings";
+		fileName = "/" + fileName + "Drawing.png";
+
+		// Creating the folder if it doesn't already exist.
+		if (!Directory.Exists(filepath))
+		{
+			Directory.CreateDirectory(Application.dataPath + "/MyDrawings");
+			File.WriteAllBytes(filepath + fileName, byteArray);
+			selectedAnimal = null;
+		}
+		else
+		{
+			File.WriteAllBytes(filepath + fileName, byteArray);
+			selectedAnimal = null;
+		}
+	}
 
 	public void UnloadDrawingUI()
 	{
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		selectedAnimal = null;
 		gameManager.UnloadDrawing();
 	}
 }
