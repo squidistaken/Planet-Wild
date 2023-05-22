@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 // Credit: Marcus
@@ -20,6 +21,13 @@ public class BrushManager : MonoBehaviour
 	private string animalName;
 
 	private GameManager gameManager;
+
+	// Using this method when the script is initialized for the screenshot.
+	private void Awake()
+	{
+		// note: i don't think this is the SMARTEST idea to do, considering it refreshes ALL of the asset database... will look into a better solution later!
+		AssetDatabase.Refresh();
+	}
 
 	void Update()
 	{
