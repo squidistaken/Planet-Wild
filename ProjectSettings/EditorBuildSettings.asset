@@ -6,12 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestSession01Scene.unity
-    guid: c47aef6417f1aa241b58cfb5630f2a45
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 26bf06f49152c1548b18db4a64c18f4f
   - enabled: 1
     path: Assets/UI/POV UI/POVScene.unity
     guid: 8637e2a813ee1d24aa1331804be29b01
   - enabled: 1
     path: Assets/UI/Drawing UI/DrawingScene.unity
     guid: af0dd21a3034d7946bd22703d7e8287e
+  - enabled: 1
+    path: Assets/Scenes/Levels/CoastScene.unity
+    guid: d0ab9b82f95a6934c93568d6db5ac783
+  - enabled: 1
+    path: Assets/Scenes/Levels/ForestScene.unity
+    guid: 93cf37250dd96c04d8be9615507a1a36
+  - enabled: 1
+    path: Assets/Scenes/Levels/HeatherScene.unity
+    guid: 18b4b16db6ca2d842a6df6d71efd143c
   m_configObjects: {}

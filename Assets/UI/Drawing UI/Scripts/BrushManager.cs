@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Marcus
 public class BrushManager : MonoBehaviour
@@ -18,14 +19,12 @@ public class BrushManager : MonoBehaviour
 
 	private int layerCount;
 
-	private string animalName;
+	private string selectedAnimal;
 
 	private GameManager gameManager;
 
-	// Using this method when the script is initialized for the screenshot.
 	private void Awake()
 	{
-		// note: i don't think this is the SMARTEST idea to do, considering it refreshes ALL of the asset database... will look into a better solution later!
 		AssetDatabase.Refresh();
 	}
 
@@ -73,8 +72,10 @@ public class BrushManager : MonoBehaviour
 
 	public void Save()
 	{
-		animalName = GameManager.animalName;
-		StartCoroutine(SaveDrawing(animalName));
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		selectedAnimal = gameManager.animalName;
+
+		StartCoroutine(SaveDrawing(selectedAnimal));
 	}
 
 	private IEnumerator SaveDrawing(string fileName)
@@ -101,19 +102,31 @@ public class BrushManager : MonoBehaviour
 		{
 			Directory.CreateDirectory(Application.dataPath + "/MyDrawings");
 			File.WriteAllBytes(filepath + fileName, byteArray);
+			selectedAnimal = null;
 		}
 		else
 		{
 			File.WriteAllBytes(filepath + fileName, byteArray);
-			File.Open(filepath + fileName, FileMode.Open);
+			selectedAnimal = null;
 		}
 	}
 
 	public void UnloadDrawingUI()
 	{
-		layerCount = 0;
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		animalName = null;
-		gameManager.UnloadDrawing();
+		// temp code - remove after testing session
+		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
+		{
+			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+			selectedAnimal = null;
+			gameManager.UnloadScene("TutorialScene");
+			gameManager.LoadScene("ForestScene", false);
+			gameManager.UnloadDrawing();
+		}
+		else
+		{
+			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+			selectedAnimal = null;
+			gameManager.UnloadDrawing();
+		}
 	}
 }
