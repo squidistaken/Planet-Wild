@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // Credit: Marcus
 public class BrushManager : MonoBehaviour
@@ -18,9 +18,16 @@ public class BrushManager : MonoBehaviour
 
 	private int layerCount;
 
-	private string selectedAnimal;
+	private string animalName;
 
 	private GameManager gameManager;
+
+	// Using this method when the script is initialized for the screenshot.
+	private void Awake()
+	{
+		// note: i don't think this is the SMARTEST idea to do, considering it refreshes ALL of the asset database... will look into a better solution later!
+		AssetDatabase.Refresh();
+	}
 
 	void Update()
 	{
@@ -66,10 +73,8 @@ public class BrushManager : MonoBehaviour
 
 	public void Save()
 	{
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		selectedAnimal = gameManager.animalName;
-
-		StartCoroutine(SaveDrawing(selectedAnimal));
+		animalName = GameManager.animalName;
+		StartCoroutine(SaveDrawing(animalName));
 	}
 
 	private IEnumerator SaveDrawing(string fileName)
@@ -96,19 +101,19 @@ public class BrushManager : MonoBehaviour
 		{
 			Directory.CreateDirectory(Application.dataPath + "/MyDrawings");
 			File.WriteAllBytes(filepath + fileName, byteArray);
-			selectedAnimal = null;
 		}
 		else
 		{
 			File.WriteAllBytes(filepath + fileName, byteArray);
-			selectedAnimal = null;
+			File.Open(filepath + fileName, FileMode.Open);
 		}
 	}
 
 	public void UnloadDrawingUI()
 	{
+		layerCount = 0;
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		selectedAnimal = null;
+		animalName = null;
 		gameManager.UnloadDrawing();
 	}
 }

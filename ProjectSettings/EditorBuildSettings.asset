@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DrawingScene.unity
-    guid: af0dd21a3034d7946bd22703d7e8287e
+    path: Assets/Scenes/TestSession01Scene.unity
+    guid: c47aef6417f1aa241b58cfb5630f2a45
   - enabled: 1
-    path: Assets/Scenes/POVScene.unity
+    path: Assets/UI/POV UI/POVScene.unity
     guid: 8637e2a813ee1d24aa1331804be29b01
+  - enabled: 1
+    path: Assets/UI/Drawing UI/DrawingScene.unity
+    guid: af0dd21a3034d7946bd22703d7e8287e
   m_configObjects: {}

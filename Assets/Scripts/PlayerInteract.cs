@@ -30,13 +30,6 @@ public class PlayerInteract : MonoBehaviour
     public float dropForwardForce = 1f;
     public float dropUpForce = 1f;
 
-    private GameManager gameManager;
-
-	private void Start()
-	{
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-	}
-
 	// Update is called once per frame
 	void Update()
     {

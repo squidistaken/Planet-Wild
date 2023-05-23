@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
-	public string animalName;
+	public static string animalName;
 
 	private void Start()
 	{
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
 		animalName = selectedAnimal;
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
 		UnloadScene("POVScene");
+		ScreenCapture.CaptureScreenshot(Application.dataPath + "/TemporaryScreenshot.png");
 		LoadScene("DrawingScene", true);
 	}
 
