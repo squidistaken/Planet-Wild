@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.XPath;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Credit: Marcus
-
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
@@ -40,13 +40,32 @@ public class GameManager : MonoBehaviour
 
 	#region Drawing Manager
 
+
+	public static Texture2D screenshotTexture;
+
 	public void LoadDrawing(string selectedAnimal)
 	{
-		ScreenCapture.CaptureScreenshot(Application.dataPath + "/TemporaryScreenshot.png");
+		StartCoroutine(TakeScreenshot());
 		animalName = selectedAnimal;
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
 		UnloadScene("POVScene");
 		LoadScene("DrawingScene", true);
+	}
+
+	IEnumerator TakeScreenshot()
+	{
+		yield return new WaitForEndOfFrame();
+		screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
+
+		// All the following is necessary due to a Unity bug when working in Linear color space
+		// See forum post: https://answers.unity.com/questions/1655518/screencapturecapturescreenshotastexture-is-making.html
+
+		Texture2D newScreenshotTexture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+		newScreenshotTexture.SetPixels(screenshotTexture.GetPixels());
+		newScreenshotTexture.Apply();
+
+		screenshotTexture = newScreenshotTexture;
+
 	}
 
 	private BrushManager brushManager;

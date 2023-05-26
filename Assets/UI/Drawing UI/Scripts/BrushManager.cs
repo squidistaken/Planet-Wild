@@ -23,11 +23,6 @@ public class BrushManager : MonoBehaviour
 
 	private GameManager gameManager;
 
-	private void Awake()
-	{
-		AssetDatabase.Refresh();
-	}
-
 	void Update()
 	{
 		var Ray = drawingCamera.ScreenPointToRay(Input.mousePosition);
