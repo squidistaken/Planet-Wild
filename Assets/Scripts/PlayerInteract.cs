@@ -57,10 +57,11 @@ public class PlayerInteract : MonoBehaviour
 					interactObj.Interact();
 				}
 
-                // Object reference does not exist @Stan
                 if (hitInfo.transform.parent.tag == "Animal" && IsHoldingItem)
                 {
+                    //Consumes item
                     Debug.Log("consumed item");
+                    hitInfo.transform.GetComponent<HeartParticle>().psPlay();
                     Destroy(PickedUpItem);
                     IsHoldingItem = false;
                 }
