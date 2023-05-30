@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
 	#region Scene Manager
 
-	public void LoadScene(string scene, bool isAdditive)
+	public static void LoadScene(string scene, bool isAdditive)
 	{
 		switch (isAdditive)
 		{
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void UnloadScene(string scene)
+	public static void UnloadScene(string scene)
 	{
 		SceneManager.UnloadSceneAsync(scene);
 	}
@@ -45,16 +45,18 @@ public class GameManager : MonoBehaviour
 
 	public void LoadDrawing(string selectedAnimal)
 	{
-		StartCoroutine(TakeScreenshot());
 		animalName = selectedAnimal;
-		Player.GetComponent<PlayerControls>().DisablePlayerControls();
 		UnloadScene("POVScene");
+		Player.GetComponent<PlayerControls>().DisablePlayerControls();
+		StartCoroutine(TakeScreenshot());
 		LoadScene("DrawingScene", true);
 	}
 
 	IEnumerator TakeScreenshot()
 	{
 		yield return new WaitForEndOfFrame();
+		
+
 		screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
 
 		// All the following is necessary due to a Unity bug when working in Linear color space
@@ -65,7 +67,6 @@ public class GameManager : MonoBehaviour
 		newScreenshotTexture.Apply();
 
 		screenshotTexture = newScreenshotTexture;
-
 	}
 
 	private BrushManager brushManager;

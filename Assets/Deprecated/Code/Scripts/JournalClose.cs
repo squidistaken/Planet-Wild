@@ -27,10 +27,10 @@ public class JournalClose : MonoBehaviour
     public void closeJournal()
     {
         brushManager.ClearLines();
-
+        /* 
         gameManager.UnloadScene("DrawingScene");
         gameManager.LoadScene("POVScene", true);
-
+        */ 
 
         Crossair.SetActive(true); //shows cusor
         EnablePlayerControls(); //enables player controls

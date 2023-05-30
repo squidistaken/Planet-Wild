@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,8 +16,9 @@ public class BrushManager : MonoBehaviour
 	public Camera renderCamera;
 	public RenderTexture RTexture;
 
+	[SerializeField]
 	private int layerCount;
-
+	[SerializeField]
 	private string selectedAnimal;
 
 	private GameManager gameManager;
@@ -113,8 +113,8 @@ public class BrushManager : MonoBehaviour
 		{
 			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 			selectedAnimal = null;
-			gameManager.UnloadScene("TutorialScene");
-			gameManager.LoadScene("ForestScene", false);
+			GameManager.UnloadScene("TutorialScene");
+			GameManager.LoadScene("ForestScene", false);
 			gameManager.UnloadDrawing();
 		}
 		else

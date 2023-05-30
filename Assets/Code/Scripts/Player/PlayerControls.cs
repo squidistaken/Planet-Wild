@@ -25,4 +25,21 @@ public class PlayerControls : MonoBehaviour
 		Cursor.visible = true; //show cursor
 		Cursor.lockState = CursorLockMode.None;
 	}
+
+	[SerializeField]
+	private bool journalEnabled;
+
+	private void Update()
+	{
+		if (Input.GetButtonDown("Jump") && !journalEnabled) // and yadda yadda yadda
+        {
+			journalEnabled = true;
+			DisablePlayerControls();
+			GameManager.UnloadScene("POVScene");
+			GameManager.LoadScene("JournalScene", true);
+
+			// do stuff
+        }
+        
+	}
 }
