@@ -57,7 +57,7 @@ public class PlayerInteract : MonoBehaviour
 					interactObj.Interact();
 				}
 
-                if (hitInfo.transform.parent.tag == "Animal" && IsHoldingItem)
+                if (hitInfo.transform.tag == "Animal" && IsHoldingItem)
                 {
                     //Consumes item
                     Debug.Log("consumed item");
@@ -68,7 +68,6 @@ public class PlayerInteract : MonoBehaviour
 
                 if (IsHoldingItem)
                 {
-                    Debug.Log("threw item");
                     //Drop item 
                     PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
                     PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.forward * dropForwardForce, ForceMode.Impulse);
@@ -85,6 +84,7 @@ public class PlayerInteract : MonoBehaviour
                     hitInfo.rigidbody.isKinematic = true;
                     PickedUpItem = hitInfo.transform.gameObject;
                     IsHoldingItem = true;
+                    PickedUpItem.transform.rotation = Quaternion.identity;
                 }
             
             }
@@ -92,7 +92,6 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (IsHoldingItem)
                 {
-                    Debug.Log("threw item false");
                     //Drop item 
                     PickedUpItem.GetComponent<Rigidbody>().isKinematic = false;
                     PickedUpItem.GetComponent<Rigidbody>().AddForce(Camera.forward * dropForwardForce, ForceMode.Impulse);
