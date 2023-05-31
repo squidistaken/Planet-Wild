@@ -8,12 +8,33 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
+
+	[System.NonSerialized]
 	public string animalName;
 
-	private void Start()
+	// TODO: load main menu on awake
+
+	// super temporary - just for debugging
+	private void Update()
 	{
-		LoadScene("POVScene", true);
-		Player = GameObject.Find("Player");
+		if (Input.GetKeyDown("1"))
+		{
+			LoadScene("ManagerScene", false);
+			LoadScene("ForestScene", true);
+			LoadScene("POVScene", true);
+		}
+		if (Input.GetKeyDown("2"))
+		{
+			LoadScene("ManagerScene", false);
+			LoadScene("HeatherScene", true);
+			LoadScene("POVScene", true);
+		}
+		if (Input.GetKeyDown("3"))
+		{
+			LoadScene("ManagerScene", false);
+			LoadScene("CoastScene", true);
+			LoadScene("POVScene", true);
+		}
 	}
 
 	#region Scene Manager
@@ -45,6 +66,7 @@ public class GameManager : MonoBehaviour
 
 	public void LoadDrawing(string selectedAnimal)
 	{
+		Player = GameObject.Find("Player");
 		animalName = selectedAnimal;
 		UnloadScene("POVScene");
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
@@ -56,7 +78,6 @@ public class GameManager : MonoBehaviour
 	{
 		yield return new WaitForEndOfFrame();
 		
-
 		screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
 
 		// All the following is necessary due to a Unity bug when working in Linear color space

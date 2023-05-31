@@ -108,8 +108,13 @@ public class BrushManager : MonoBehaviour
 
 	public void UnloadDrawingUI()
 	{
+
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		selectedAnimal = null;
+		gameManager.UnloadDrawing();
+
 		// temp code - remove after testing session
-		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
+		/* if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
 		{
 			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 			selectedAnimal = null;
@@ -122,6 +127,6 @@ public class BrushManager : MonoBehaviour
 			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 			selectedAnimal = null;
 			gameManager.UnloadDrawing();
-		}
+		}*/
 	}
 }
