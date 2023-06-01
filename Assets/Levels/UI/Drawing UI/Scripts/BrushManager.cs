@@ -96,14 +96,11 @@ public class BrushManager : MonoBehaviour
 		if (!Directory.Exists(filepath))
 		{
 			Directory.CreateDirectory(Application.dataPath + "/MyDrawings");
-			File.WriteAllBytes(filepath + fileName, byteArray);
-			selectedAnimal = null;
 		}
-		else
-		{
-			File.WriteAllBytes(filepath + fileName, byteArray);
-			selectedAnimal = null;
-		}
+
+		File.WriteAllBytes(filepath + fileName, byteArray);
+		selectedAnimal = null;
+		UnloadDrawingUI();
 	}
 
 	public void UnloadDrawingUI()

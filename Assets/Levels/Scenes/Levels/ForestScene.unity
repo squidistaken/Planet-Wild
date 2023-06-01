@@ -1056,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Squirrel.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
 --- !u!1001 &969544136
@@ -1549,6 +1553,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
       propertyPath: m_Name
       value: Squirrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
@@ -2077,6 +2085,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
       propertyPath: m_Name
       value: Squirrel.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c57e5b508837d49bab001c6292d147, type: 3}
