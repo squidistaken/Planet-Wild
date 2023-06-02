@@ -58,26 +58,13 @@ public class GameManager : MonoBehaviour
 	}
 
 	#endregion
-
-	#region Drawing Manager
-
-
+	
+	[System.NonSerialized]
 	public static Texture2D screenshotTexture;
-
-	public void LoadDrawing(string selectedAnimal)
-	{
-		Player = GameObject.Find("Player");
-		animalName = selectedAnimal;
-		UnloadScene("POVScene");
-		Player.GetComponent<PlayerControls>().DisablePlayerControls();
-		StartCoroutine(TakeScreenshot());
-		LoadScene("DrawingScene", true);
-	}
-
 	IEnumerator TakeScreenshot()
 	{
 		yield return new WaitForEndOfFrame();
-		
+
 		screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
 
 		// All the following is necessary due to a Unity bug when working in Linear color space
@@ -90,7 +77,25 @@ public class GameManager : MonoBehaviour
 		screenshotTexture = newScreenshotTexture;
 	}
 
+	#region UI Manager
+
+	public void LoadDrawingUI(string selectedAnimal)
+	{
+		Player = GameObject.Find("Player");
+		animalName = selectedAnimal;
+		UnloadScene("POVScene");
+		Player.GetComponent<PlayerControls>().DisablePlayerControls();
+		StartCoroutine(TakeScreenshot());
+		LoadScene("DrawingScene", true);
+	}
+
 	private BrushManager brushManager;
+
+	public static void LoadUI(string newMenu, string oldMenu)
+	{
+		GameManager.LoadScene(newMenu, true);
+		GameManager.UnloadScene(oldMenu);
+	}
 
 	public void UnloadUI(string UI)
 	{
@@ -110,7 +115,6 @@ public class GameManager : MonoBehaviour
 		}
 
 		UnloadScene(UI);
-		
 		LoadScene("POVScene", true);
 	}
 

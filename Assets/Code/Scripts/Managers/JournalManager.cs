@@ -12,34 +12,16 @@ public class JournalManager : MonoBehaviour
 	{
 		string filepath = Application.dataPath + "/MyDrawings";
 
-		if (Directory.Exists(filepath))
-		{
-			Process.Start(filepath);
-
-			/* ProcessStartInfo startInfo = new ProcessStartInfo
-			{
-				Arguments = filepath,
-				FileName = "explorer.exe"
-			};
-			Process.Start(startInfo);*/
-		}
-		else
+		if (!Directory.Exists(filepath))
 		{
 			Directory.CreateDirectory(filepath);
-			Process.Start(filepath);
 		}
-
+		Process.Start(filepath);
 	}
 
-
-	public void ChangeRegion()
+	public void LoadOption(string option)
 	{
-
-	}
-
-	public void LoadSettings()
-	{
-
+		GameManager.LoadUI(option, "JournalScene");
 	}
 
 	public void ResumeGame()
@@ -50,6 +32,9 @@ public class JournalManager : MonoBehaviour
 
 	public void CloseGame()
 	{
-
+		#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
 	}
 }
