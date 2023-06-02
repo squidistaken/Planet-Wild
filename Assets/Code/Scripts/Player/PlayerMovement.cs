@@ -35,16 +35,16 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * playerSpeed * Time.deltaTime);
 
-
-        /* if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }*/
-        
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
-        
-    }
+        // pulling up journal
+		if (Input.GetButtonDown("Jump"))
+		{
+			this.GetComponent<PlayerControls>().DisablePlayerControls();
+			GameManager.UnloadScene("POVScene");
+			GameManager.LoadScene("JournalScene", true);
+		}
+	}
 }

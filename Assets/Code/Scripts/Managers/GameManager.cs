@@ -8,17 +8,38 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
+
+	[System.NonSerialized]
 	public string animalName;
 
-	private void Start()
+	// TODO: load main menu on awake
+
+	// super temporary - just for debugging
+	private void Update()
 	{
-		LoadScene("POVScene", true);
-		Player = GameObject.Find("Player");
+		if (Input.GetKeyDown("1"))
+		{
+			LoadScene("ManagerScene", false);
+			LoadScene("ForestScene", true);
+			LoadScene("POVScene", true);
+		}
+		if (Input.GetKeyDown("2"))
+		{
+			LoadScene("ManagerScene", false);
+			LoadScene("HeatherScene", true);
+			LoadScene("POVScene", true);
+		}
+		if (Input.GetKeyDown("3"))
+		{
+			LoadScene("ManagerScene", false);
+			LoadScene("CoastScene", true);
+			LoadScene("POVScene", true);
+		}
 	}
 
 	#region Scene Manager
 
-	public void LoadScene(string scene, bool isAdditive)
+	public static void LoadScene(string scene, bool isAdditive)
 	{
 		switch (isAdditive)
 		{
@@ -31,30 +52,19 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void UnloadScene(string scene)
+	public static void UnloadScene(string scene)
 	{
 		SceneManager.UnloadSceneAsync(scene);
 	}
 
 	#endregion
-
-	#region Drawing Manager
-
-
+	
+	[System.NonSerialized]
 	public static Texture2D screenshotTexture;
-
-	public void LoadDrawing(string selectedAnimal)
-	{
-		StartCoroutine(TakeScreenshot());
-		animalName = selectedAnimal;
-		Player.GetComponent<PlayerControls>().DisablePlayerControls();
-		UnloadScene("POVScene");
-		LoadScene("DrawingScene", true);
-	}
-
 	IEnumerator TakeScreenshot()
 	{
 		yield return new WaitForEndOfFrame();
+
 		screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
 
 		// All the following is necessary due to a Unity bug when working in Linear color space
@@ -65,18 +75,46 @@ public class GameManager : MonoBehaviour
 		newScreenshotTexture.Apply();
 
 		screenshotTexture = newScreenshotTexture;
+	}
 
+	#region UI Manager
+
+	public void LoadDrawingUI(string selectedAnimal)
+	{
+		Player = GameObject.Find("Player");
+		animalName = selectedAnimal;
+		UnloadScene("POVScene");
+		Player.GetComponent<PlayerControls>().DisablePlayerControls();
+		StartCoroutine(TakeScreenshot());
+		LoadScene("DrawingScene", true);
 	}
 
 	private BrushManager brushManager;
-	public void UnloadDrawing()
-	{
-		brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
-		Player.GetComponent<PlayerControls>().EnablePlayerControls();
-		Player.GetComponentInChildren<PlayerInteract>().IsInteracting = false;
 
-		brushManager.ClearLines();
-		UnloadScene("DrawingScene");
+	public static void LoadUI(string newMenu, string oldMenu)
+	{
+		GameManager.LoadScene(newMenu, true);
+		GameManager.UnloadScene(oldMenu);
+	}
+
+	public void UnloadUI(string UI)
+	{
+		// move finding gameobject to own method?
+		Player = GameObject.Find("Player");
+		Player.GetComponent<PlayerControls>().EnablePlayerControls();
+
+		switch (UI)
+		{
+			case "DrawingScene":
+				brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
+				brushManager.ClearLines();
+				Player.GetComponentInChildren<PlayerInteract>().IsInteracting = false;
+				break;
+			default:
+				break;
+		}
+
+		UnloadScene(UI);
 		LoadScene("POVScene", true);
 	}
 

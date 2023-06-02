@@ -11,6 +11,6 @@ public class SquirrelInteraction : MonoBehaviour, IInteractable
 	public void Interact()
 	{
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		gameManager.LoadDrawing(animalName);
+		gameManager.LoadDrawingUI(animalName);
 	}
 }

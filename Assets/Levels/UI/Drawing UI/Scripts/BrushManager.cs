@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,8 +16,9 @@ public class BrushManager : MonoBehaviour
 	public Camera renderCamera;
 	public RenderTexture RTexture;
 
+	[SerializeField]
 	private int layerCount;
-
+	[SerializeField]
 	private string selectedAnimal;
 
 	private GameManager gameManager;
@@ -96,25 +96,27 @@ public class BrushManager : MonoBehaviour
 		if (!Directory.Exists(filepath))
 		{
 			Directory.CreateDirectory(Application.dataPath + "/MyDrawings");
-			File.WriteAllBytes(filepath + fileName, byteArray);
-			selectedAnimal = null;
 		}
-		else
-		{
-			File.WriteAllBytes(filepath + fileName, byteArray);
-			selectedAnimal = null;
-		}
+
+		File.WriteAllBytes(filepath + fileName, byteArray);
+		selectedAnimal = null;
+		UnloadDrawingUI();
 	}
 
 	public void UnloadDrawingUI()
 	{
+
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		selectedAnimal = null;
+		gameManager.UnloadUI("DrawingScene");
+
 		// temp code - remove after testing session
-		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
+		/* if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
 		{
 			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 			selectedAnimal = null;
-			gameManager.UnloadScene("TutorialScene");
-			gameManager.LoadScene("ForestScene", false);
+			GameManager.UnloadScene("TutorialScene");
+			GameManager.LoadScene("ForestScene", false);
 			gameManager.UnloadDrawing();
 		}
 		else
@@ -122,6 +124,6 @@ public class BrushManager : MonoBehaviour
 			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 			selectedAnimal = null;
 			gameManager.UnloadDrawing();
-		}
+		}*/
 	}
 }
