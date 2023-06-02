@@ -108,7 +108,7 @@ public class BrushManager : MonoBehaviour
 
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		selectedAnimal = null;
-		gameManager.UnloadDrawing();
+		gameManager.UnloadUI("DrawingScene");
 
 		// temp code - remove after testing session
 		/* if (SceneManager.GetSceneByName("TutorialScene").isLoaded)

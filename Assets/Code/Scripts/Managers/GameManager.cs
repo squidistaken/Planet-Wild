@@ -91,14 +91,26 @@ public class GameManager : MonoBehaviour
 	}
 
 	private BrushManager brushManager;
-	public void UnloadDrawing()
-	{
-		brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
-		Player.GetComponent<PlayerControls>().EnablePlayerControls();
-		Player.GetComponentInChildren<PlayerInteract>().IsInteracting = false;
 
-		brushManager.ClearLines();
-		UnloadScene("DrawingScene");
+	public void UnloadUI(string UI)
+	{
+		// move finding gameobject to own method?
+		Player = GameObject.Find("Player");
+		Player.GetComponent<PlayerControls>().EnablePlayerControls();
+
+		switch (UI)
+		{
+			case "DrawingScene":
+				brushManager = GameObject.Find("BrushManager").GetComponent<BrushManager>();
+				brushManager.ClearLines();
+				Player.GetComponentInChildren<PlayerInteract>().IsInteracting = false;
+				break;
+			default:
+				break;
+		}
+
+		UnloadScene(UI);
+		
 		LoadScene("POVScene", true);
 	}
 
