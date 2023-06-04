@@ -8,6 +8,11 @@ public class JournalManager : MonoBehaviour
 {
 	private GameManager gameManager;
 
+	public void OnEnable()
+	{
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+	}
+
 	public void OpenDrawings()
 	{
 		string filepath = Application.dataPath + "/MyDrawings";
@@ -26,7 +31,6 @@ public class JournalManager : MonoBehaviour
 
 	public void ResumeGame()
 	{
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		gameManager.UnloadUI("JournalScene");
 	}
 

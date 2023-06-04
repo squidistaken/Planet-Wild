@@ -111,10 +111,11 @@ public class GameManager : MonoBehaviour
 				Player.GetComponentInChildren<PlayerInteract>().IsInteracting = false;
 				break;
 			default:
+				UnloadScene(UI);
 				break;
 		}
-
 		UnloadScene(UI);
+
 		LoadScene("POVScene", true);
 	}
 
