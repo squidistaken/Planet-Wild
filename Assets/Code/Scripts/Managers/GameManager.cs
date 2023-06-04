@@ -12,10 +12,19 @@ public class GameManager : MonoBehaviour
 	[System.NonSerialized]
 	public string animalName;
 
-	// TODO: load main menu on awake
+	private static bool gameStarted = false;
+
+	private void Awake()
+	{
+		if (!gameStarted)
+		{
+			LoadScene("MainMenuScene", true);
+			gameStarted = true;
+		}
+	}
 
 	// super temporary - just for debugging
-	private void Update()
+	/* private void Update()
 	{
 		if (Input.GetKeyDown("1"))
 		{
@@ -35,7 +44,7 @@ public class GameManager : MonoBehaviour
 			LoadScene("CoastScene", true);
 			LoadScene("POVScene", true);
 		}
-	}
+	}*/
 
 	#region Scene Manager
 

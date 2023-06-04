@@ -6,6 +6,7 @@ public class RegionSelectManager : MonoBehaviour
 {
 	public void LoadRegion(string regionName)
 	{
+		GameManager.LoadScene("ManagerScene", false);
 		GameManager.LoadScene(regionName, true);
 		GameManager.LoadScene("POVScene", true);
 		GameManager.UnloadScene("RegionSelectScene");
