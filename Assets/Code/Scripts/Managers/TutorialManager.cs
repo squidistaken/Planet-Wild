@@ -8,11 +8,6 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
     private int popUpIndex;
 
-    private void LoadScene()
-    {
-        SceneManager.LoadSceneAsync("Tutorial");
-    }
-
     void Update()
     {
         for (int i = 0; i < popUps.Length; i++)
@@ -27,19 +22,37 @@ public class TutorialManager : MonoBehaviour
              }
         }
 
-        if(popUpIndex == 0)
-        {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                popUpIndex++;
-            }
-        }
+        // Very temporary solution, reserved just for unicorn's lair
+        switch (popUpIndex) {
+            case 0:
+				if (Input.GetKeyDown(KeyCode.W))
+				{
+					popUpIndex++;
+				}
+				break;
+			case 1:
+				if (Input.GetKeyDown(KeyCode.A))
+				{
+					popUpIndex++;
+				}
+				break;
+			case 2:
+				if (Input.GetKeyDown(KeyCode.D))
+				{
+					popUpIndex++;
+				}
+				break;
+			case 3:
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					popUpIndex++;
+				}
+				break;
+            default:
+                break;
+		}
+       
       
         
     }
-
-    public void UnloadScene(string scene)
-	{
-		SceneManager.UnloadSceneAsync("Tutorial");
-	}
 }

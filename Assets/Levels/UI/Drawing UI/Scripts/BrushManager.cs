@@ -108,22 +108,14 @@ public class BrushManager : MonoBehaviour
 
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		selectedAnimal = null;
-		gameManager.UnloadUI("DrawingScene");
 
 		// temp code - remove after testing session
-		/* if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
+		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
 		{
-			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-			selectedAnimal = null;
 			GameManager.UnloadScene("TutorialScene");
 			GameManager.LoadScene("ForestScene", false);
-			gameManager.UnloadDrawing();
 		}
-		else
-		{
-			gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-			selectedAnimal = null;
-			gameManager.UnloadDrawing();
-		}*/
+
+		gameManager.UnloadUI("DrawingScene");
 	}
 }
