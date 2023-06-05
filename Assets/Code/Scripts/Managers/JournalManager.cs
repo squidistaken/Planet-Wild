@@ -8,6 +8,13 @@ public class JournalManager : MonoBehaviour
 {
 	private GameManager gameManager;
 
+	private void Update()
+	{
+		if (Input.GetButtonDown("Jump"))
+		{
+			gameManager.UnloadUI("JournalScene");
+		}
+	}
 	public void OnEnable()
 	{
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
