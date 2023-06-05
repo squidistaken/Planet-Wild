@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml.XPath;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,29 +20,6 @@ public class GameManager : MonoBehaviour
 			gameStarted = true;
 		}
 	}
-
-	// super temporary - just for debugging
-	/* private void Update()
-	{
-		if (Input.GetKeyDown("1"))
-		{
-			LoadScene("ManagerScene", false);
-			LoadScene("ForestScene", true);
-			LoadScene("POVScene", true);
-		}
-		if (Input.GetKeyDown("2"))
-		{
-			LoadScene("ManagerScene", false);
-			LoadScene("HeatherScene", true);
-			LoadScene("POVScene", true);
-		}
-		if (Input.GetKeyDown("3"))
-		{
-			LoadScene("ManagerScene", false);
-			LoadScene("CoastScene", true);
-			LoadScene("POVScene", true);
-		}
-	}*/
 
 	#region Scene Manager
 
