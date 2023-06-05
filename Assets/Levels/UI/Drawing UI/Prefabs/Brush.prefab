@@ -53,7 +53,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ba808df5ee9e0b48a9c3287af050181, type: 2}
+  - {fileID: 2100000, guid: 684cf796ae2a52e46aa43b2d7948d72d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,5 +143,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 9211386498294828162}
-  defaultMaterial: {fileID: 2100000, guid: a2c99a44662859c4fbdc1e8bcdc1a8f4, type: 2}
-  defaultSize: 0.2
