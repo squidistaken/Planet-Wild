@@ -90,7 +90,7 @@ public class BrushManager : MonoBehaviour
 		byte[] byteArray = screenshotTexture.EncodeToPNG();
 
 		string filepath = Application.dataPath + "/MyDrawings";
-		fileName = "/" + fileName + "Drawing.png";
+		fileName = "/" + DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss ") + fileName + "Drawing.png";
 
 		// Creating the folder if it doesn't already exist.
 		if (!Directory.Exists(filepath))
