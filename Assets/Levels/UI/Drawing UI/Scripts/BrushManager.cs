@@ -113,7 +113,8 @@ public class BrushManager : MonoBehaviour
 		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
 		{
 			GameManager.UnloadScene("TutorialScene");
-			GameManager.LoadScene("ForestScene", false);
+			GameManager.LoadScene("ManagerScene", false);
+			GameManager.LoadScene("ForestScene", true);
 		}
 
 		gameManager.UnloadUI("DrawingScene");
