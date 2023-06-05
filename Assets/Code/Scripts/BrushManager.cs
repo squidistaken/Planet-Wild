@@ -90,7 +90,7 @@ public class BrushManager : MonoBehaviour
 		byte[] byteArray = screenshotTexture.EncodeToPNG();
 
 		string filepath = Application.dataPath + "/MyDrawings";
-		fileName = "/" + DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss ") + fileName + "Drawing.png";
+		fileName = "/" + fileName + " Drawing" + DateTime.Now.ToString(" dd-MM-yyyy HH-mm-ss") + ".png";
 
 		// Creating the folder if it doesn't already exist.
 		if (!Directory.Exists(filepath))
@@ -105,7 +105,6 @@ public class BrushManager : MonoBehaviour
 
 	public void UnloadDrawingUI()
 	{
-
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		selectedAnimal = null;
 
