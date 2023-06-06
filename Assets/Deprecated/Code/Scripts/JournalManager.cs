@@ -15,6 +15,7 @@ public class JournalManager : MonoBehaviour
 			gameManager.UnloadUI("JournalScene");
 		}
 	}
+
 	public void OnEnable()
 	{
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();

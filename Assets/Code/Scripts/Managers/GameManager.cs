@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 // Credit: Marcus
@@ -10,18 +12,17 @@ public class GameManager : MonoBehaviour
 	[System.NonSerialized]
 	public string animalName;
 
-	private static bool gameStarted = false;
+	#region Scene Manager
 
+	private static bool gameStarted = false;
 	private void Awake()
-	{
+	{		
 		if (!gameStarted)
 		{
 			LoadScene("MainMenuScene", true);
 			gameStarted = true;
 		}
 	}
-
-	#region Scene Manager
 
 	public static void LoadScene(string scene, bool isAdditive)
 	{

@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd8e6645067f83439293ec928883214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateY: 0.05
 --- !u!1 &844152235
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +415,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1449995183}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -699,7 +700,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1449995178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba4a414d54c6be47b489285ac93200b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f757b2efe02ed040b3a54301735198c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1922056846
