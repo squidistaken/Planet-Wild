@@ -6,7 +6,9 @@ public class MainMenuManager : MonoBehaviour
 {
 	public void PlayGame()
 	{
-		GameManager.LoadScene("TutorialScene", true);
+		GameManager.LoadScene("TutorialScene", false);
+
+		GameManager.LoadScene("ManagerScene", true);
 		GameManager.LoadScene("POVScene", true);
 		GameManager.UnloadScene("MainMenuScene");
 	}
