@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 6769004969850521713}
   - component: {fileID: 2383184947946990142}
   - component: {fileID: 4678333357399429745}
+  - component: {fileID: 507590850892423784}
   m_Layer: 7
   m_Name: tree01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5601205752822018846
 Transform:
@@ -95,7 +96,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -0.27214193, y: 3.8899803, z: -1.5313725}
   m_Size: 15.917753
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
@@ -125,3 +126,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1001577, y: 15.917753, z: 1.983825}
   m_Center: {x: 0.017591953, y: 3.8899803, z: 0.100197434}
+--- !u!208 &507590850892423784
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111772872811276708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 7.2950006, y: 7.9590006, z: 6.4010005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.272, y: 3.89, z: -1.531}
+  m_TimeToStationary: 0.5
