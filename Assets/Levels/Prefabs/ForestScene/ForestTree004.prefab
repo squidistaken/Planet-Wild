@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 4206340983948960808}
   - component: {fileID: 6242782992252934471}
   - component: {fileID: 5418621166176365795}
-  - component: {fileID: 1596446903704460619}
   m_Layer: 7
-  m_Name: Tree04
+  m_Name: ForestTree004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2404659033586681341}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 630.4026, y: 8.789614, z: 559.7879}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127,19 +126,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4206340983948960808}
   m_Enabled: 1
---- !u!208 &1596446903704460619
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2404659033586681341}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.045, y: 0.061000004, z: 0.041}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.019000001, y: 0.061000004, z: -0.021000002}
-  m_TimeToStationary: 0.5
