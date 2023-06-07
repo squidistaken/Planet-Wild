@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Credit: Stan
 public class PlayerMovement : MonoBehaviour
@@ -44,7 +45,15 @@ public class PlayerMovement : MonoBehaviour
 		{
 			this.GetComponent<PlayerControls>().DisablePlayerControls();
 			GameManager.UnloadScene("POVScene");
-			GameManager.LoadScene("JournalScene", true);
+
+            if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
+            {
+				GameManager.LoadScene("RegionSelectScene", true);
+			}
+            else
+            {
+				GameManager.LoadScene("JournalScene", true);
+			}
 		}
 	}
 }
