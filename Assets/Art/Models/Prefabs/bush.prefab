@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4791371465193722194}
   - component: {fileID: 7321350785600611736}
   - component: {fileID: 7957872477633029078}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -0.00043245405, y: -0.00092520565, z: 0.0043917466}
   m_Size: 0.066410616
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
