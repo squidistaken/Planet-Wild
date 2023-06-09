@@ -18,6 +18,9 @@ public class AINavigation : MonoBehaviour
     [SerializeField]
     float walkRange;
 
+    Vector3 position1;
+    Vector3 position2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class AINavigation : MonoBehaviour
         Patrol();
     }
 
-    void Patrol()
+    private void Patrol()
     {
         if (!walkpointSet)
         {
@@ -40,7 +43,7 @@ public class AINavigation : MonoBehaviour
         {
             agent.SetDestination(destPoint);
         }
-        if (Vector3.Distance(transform.position, destPoint) < 10)
+        if (Vector3.Distance(transform.position, destPoint) < 10 || agent.velocity.magnitude == 0)
         {
             walkpointSet = false;
         }
