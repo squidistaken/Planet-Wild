@@ -21,11 +21,11 @@ public class Slideshow : MonoBehaviour
 
         Rect imageRect = new Rect(0, 0, Screen.width, Screen.height);
 
+
         GUI.DrawTexture(imageRect, imageArray[currentImage]);
         guiStyle.fontSize = fontSize;
         guiStyle.normal.textColor = Color.white;
-        GUI.Label(new Rect(textPositionX, textPositionY, 1, 1), "Klik om door te gaan >>", guiStyle);
-
+        GUI.Label(new Rect(Screen.width - textPositionX, Screen.height - textPositionY, 75, 75), "Klik om door te gaan >>", guiStyle);
     }
 
     // Start is called before the first frame update

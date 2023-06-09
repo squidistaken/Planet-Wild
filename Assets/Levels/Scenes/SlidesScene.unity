@@ -317,7 +317,19 @@ MonoBehaviour:
   imageArray:
   - {fileID: 2800000, guid: e7771c4df8e425d4988de4fc40876101, type: 3}
   - {fileID: 2800000, guid: d9c836ae8c95f1541a3eb1f9e791eba0, type: 3}
-  nextScene: {fileID: 102900000, guid: 26bf06f49152c1548b18db4a64c18f4f, type: 3}
+  - {fileID: 2800000, guid: 40dd8fa732a3f09429e0c39b86a27b9a, type: 3}
+  - {fileID: 2800000, guid: 57e2f7b189594b34786b6088463ff0d5, type: 3}
+  - {fileID: 2800000, guid: d6aba15ed6b5d7c44b75d9f045212a40, type: 3}
+  - {fileID: 2800000, guid: edddf7c51c7812d4db6ada3cb1e26959, type: 3}
+  - {fileID: 2800000, guid: 43c5e3f7989596e42914136b62161855, type: 3}
+  - {fileID: 2800000, guid: e0441707da0b45f4a8ff46994a550d96, type: 3}
+  - {fileID: 2800000, guid: 628f7baa6fcb2334c9222cd4d00d1d86, type: 3}
+  - {fileID: 2800000, guid: fa44409866db2654cb331a59405ebab9, type: 3}
+  - {fileID: 2800000, guid: c644ba0a7adc7fe47bcc984730221840, type: 3}
+  - {fileID: 2800000, guid: 9ef693a65a576c54ba114408cabcd645, type: 3}
+  textPositionX: 600
+  textPositionY: 65
+  fontSize: 55
 --- !u!4 &1500406522
 Transform:
   m_ObjectHideFlags: 0
