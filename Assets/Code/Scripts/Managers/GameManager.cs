@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 	public static Texture2D screenshotTexture;
 	IEnumerator TakeScreenshot()
 	{
+		yield return null;
 		yield return new WaitForEndOfFrame();
 
 		screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
@@ -60,6 +61,10 @@ public class GameManager : MonoBehaviour
 		newScreenshotTexture.Apply();
 
 		screenshotTexture = newScreenshotTexture;
+
+		yield return null;
+
+		LoadScene("DrawingScene", true);
 	}
 
 	#region UI Manager
@@ -68,10 +73,10 @@ public class GameManager : MonoBehaviour
 	{
 		Player = GameObject.Find("Player");
 		animalName = selectedAnimal;
-		UnloadScene("POVScene");
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
+		UnloadScene("POVScene");
 		StartCoroutine(TakeScreenshot());
-		LoadScene("DrawingScene", true);
+		
 	}
 
 	private BrushManager brushManager;
