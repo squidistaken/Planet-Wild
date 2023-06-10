@@ -24415,7 +24415,7 @@ GameObject:
   - component: {fileID: 3144632384907431629}
   - component: {fileID: 4316936236649887139}
   - component: {fileID: 4316936236649887140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Board 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
