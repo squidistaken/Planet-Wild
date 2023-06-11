@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
 	public string animalName;
 
 	#region Scene Manager
-
-	private static bool gameStarted = false;
+	
+	private static bool gameStarted = true;
 	private void Awake()
 	{		
 		if (!gameStarted)
@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
 		POVManager.SetActive(false);
 
+		FindObjectOfType<AudioManager>().PlayAudio("OpenJournal");
 		StartCoroutine(TakeScreenshot());
 		
 	}
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
 				{
 					if (!uiLoaded)
 					{
+						FindObjectOfType<AudioManager>().PlayAudio("OpenJournal");
 						Player.GetComponent<PlayerControls>().DisablePlayerControls();
 
 						POVManager.SetActive(false);

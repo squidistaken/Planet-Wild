@@ -53,7 +53,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 684cf796ae2a52e46aa43b2d7948d72d, type: 2}
+  - {fileID: 2100000, guid: 77a4ce36cedde924488675fd97ddbe03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 9211386498294828162}
+  eraserMaterial: {fileID: 2100000, guid: 77a4ce36cedde924488675fd97ddbe03, type: 2}

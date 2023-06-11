@@ -70,6 +70,7 @@ public class BrushManager : MonoBehaviour
 
 	public void ClearLines()
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("OptionSelect");
 		clonedBrushes = GameObject.FindGameObjectsWithTag("Drawing");
 
 		foreach (GameObject brush in clonedBrushes)
@@ -116,6 +117,7 @@ public class BrushManager : MonoBehaviour
 
 	public void UnloadDrawingUI()
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("CloseJournal");
 		gameManager.UnloadUI("DrawingScene");
 
 		selectedAnimal = null;

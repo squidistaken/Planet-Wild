@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 243804739}
   - component: {fileID: 243804738}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,11 +220,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478ba3ccbd1aa644d8118d1751c26317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  volume: 0
-  pitch: 0
-  loop: 0
-  source: {fileID: 0}
+  sounds:
+  - name: OpenJournal
+    audioClip: {fileID: 8300000, guid: 9868e47f4d070e94a8b897217d1fb054, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+  - name: CloseJournal
+    audioClip: {fileID: 8300000, guid: 3f65e4d608245ff4f96067e7e09ecefd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+  - name: DrawingDraw
+    audioClip: {fileID: 8300000, guid: a815c74f74076c146959393c08536089, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+  - name: DrawingErase
+    audioClip: {fileID: 8300000, guid: a6a3018a12e14ec46968fbdbdc74d9f8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+  - name: PlayerWalk
+    audioClip: {fileID: 8300000, guid: c1342d2902ef4c74ca610d364cf539db, type: 3}
+    volume: 0.1
+    pitch: 0.8
+    loop: 0
+    spatialBlend: 0
+  - name: OptionSelect
+    audioClip: {fileID: 8300000, guid: 95d114fe774c7aa4d811ea70a98d2088, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
 --- !u!4 &243804739
 Transform:
   m_ObjectHideFlags: 0

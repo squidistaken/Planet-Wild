@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
 			{
 				if (Input.GetButtonDown("Jump"))
 				{
+					FindObjectOfType<AudioManager>().PlayAudio("CloseJournal");
 					gameManager.UnloadUI(gameObject.scene.name);
 				}
 			}
@@ -34,11 +35,13 @@ public class MenuManager : MonoBehaviour
 
 	public void GoBackToMenu()
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("CloseJournal");
 		GameManager.LoadUI("JournalScene", gameObject.scene.ToString());
 	}
 
 	public void CloseGame()
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("OptionSelect");
 		#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
@@ -51,6 +54,7 @@ public class MenuManager : MonoBehaviour
 
 	public void PlayGame()
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("OpenJournal");
 		GameManager.LoadScene("SlidesScene", false);
 	}
 
@@ -61,7 +65,7 @@ public class MenuManager : MonoBehaviour
 	public void OpenDrawings()
 	{
 		string filepath = Application.dataPath + "/MyDrawings";
-
+		FindObjectOfType<AudioManager>().PlayAudio("OptionSelect");
 		if (!Directory.Exists(filepath))
 		{
 			Directory.CreateDirectory(filepath);
@@ -71,11 +75,13 @@ public class MenuManager : MonoBehaviour
 
 	public void ResumeGame()
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("CloseJournal");
 		gameManager.UnloadUI("JournalScene");
 	}
 
 	public void LoadOption(string option)
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("OpenJournal");
 		GameManager.LoadUI(option, "JournalScene");
 	}
 
@@ -85,6 +91,7 @@ public class MenuManager : MonoBehaviour
 
 	public void LoadRegion(string regionName)
 	{
+		FindObjectOfType<AudioManager>().PlayAudio("OptionSelect");
 		GameManager.LoadScene(regionName, false);
 		GameManager.LoadScene("ManagerScene", true);
 		GameManager.LoadScene("POVScene", true);
