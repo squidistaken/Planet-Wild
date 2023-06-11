@@ -19,7 +19,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    void Update()
+    GameObject POVManager;
+
+	private void Start()
+	{
+		POVManager = GameObject.Find("POVManager");
+	}
+
+	void Update()
     {        
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -38,13 +45,5 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-
-        // pulling up journal
-		if (Input.GetButtonDown("Jump"))
-		{
-			this.GetComponent<PlayerControls>().DisablePlayerControls();
-			GameManager.UnloadScene("POVScene");
-			GameManager.LoadScene("JournalScene", true);
-		}
 	}
 }

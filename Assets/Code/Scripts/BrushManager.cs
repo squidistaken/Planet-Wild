@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 // Credit: Marcus
@@ -9,19 +10,32 @@ public class BrushManager : MonoBehaviour
 {
 	BrushInitialize activeBrush;
 
-	public GameObject brushPrefab;
-	public Camera drawingCamera;
+	[SerializeField]
+	private GameObject brushPrefab;
+
+	[SerializeField]
+	private Camera drawingCamera;
+
 	private GameObject[] clonedBrushes;
 
-	public Camera renderCamera;
-	public RenderTexture RTexture;
+	[SerializeField]
+	private Camera renderCamera;
+	[SerializeField]
+	private RenderTexture RTexture;
 
 	[SerializeField]
 	private int layerCount;
+
 	[SerializeField]
 	private string selectedAnimal;
 
 	private GameManager gameManager;
+
+	private void OnEnable()
+	{
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		selectedAnimal = gameManager.animalName;
+	}
 
 	void Update()
 	{
@@ -67,9 +81,6 @@ public class BrushManager : MonoBehaviour
 
 	public void Save()
 	{
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		selectedAnimal = gameManager.animalName;
-
 		StartCoroutine(SaveDrawing(selectedAnimal));
 	}
 
@@ -99,23 +110,14 @@ public class BrushManager : MonoBehaviour
 		}
 
 		File.WriteAllBytes(filepath + fileName, byteArray);
-		selectedAnimal = null;
+
 		UnloadDrawingUI();
 	}
 
 	public void UnloadDrawingUI()
 	{
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		selectedAnimal = null;
-
-		// temp code - remove after testing session
-		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
-		{
-			GameManager.UnloadScene("TutorialScene");
-			GameManager.LoadScene("ForestScene", false);
-			GameManager.LoadScene("ManagerScene", true);
-		}
-
 		gameManager.UnloadUI("DrawingScene");
+
+		selectedAnimal = null;
 	}
 }

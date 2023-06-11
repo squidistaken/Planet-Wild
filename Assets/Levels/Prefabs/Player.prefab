@@ -258,6 +258,9 @@ MonoBehaviour:
   Camera: {fileID: 0}
   dropForwardForce: 1
   dropUpForce: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1274723981617803564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +345,6 @@ MonoBehaviour:
   controller: {fileID: 1274723981680859668}
   playerSpeed: 12
   gravity: -40
-  jumpHeight: 3
   groundCheck: {fileID: 1274723981166648000}
   groundDistance: 0.4
   groundMask:
