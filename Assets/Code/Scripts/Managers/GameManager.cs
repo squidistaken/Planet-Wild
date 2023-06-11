@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 // Credit: Marcus
 public class GameManager : MonoBehaviour
 {
 	private GameObject Player;
+	// there is probably a better way to do this but ehhhhhh, let's be lazy again
+	private GameObject POVManager;
 
 	[System.NonSerialized]
 	public string animalName;
@@ -69,12 +69,20 @@ public class GameManager : MonoBehaviour
 
 	#region UI Manager
 
+	public delegate void AnimalTaskComplete(string animalName);
+
+	public static event AnimalTaskComplete OnFound;
+
 	public void LoadDrawingUI(string selectedAnimal)
 	{
-		Player = GameObject.Find("Player");
 		animalName = selectedAnimal;
+		// Invoke Task completion event
+
+		if (OnFound != null) OnFound(animalName);
+
 		Player.GetComponent<PlayerControls>().DisablePlayerControls();
-		UnloadScene("POVScene");
+		POVManager.SetActive(false);
+
 		StartCoroutine(TakeScreenshot());
 		
 	}
@@ -89,8 +97,8 @@ public class GameManager : MonoBehaviour
 
 	public void UnloadUI(string UI)
 	{
-		// move finding gameobject to own method?
-		Player = GameObject.Find("Player");
+		POVManager.SetActive(true);
+		
 		Player.GetComponent<PlayerControls>().EnablePlayerControls();
 
 		switch (UI)
@@ -104,9 +112,43 @@ public class GameManager : MonoBehaviour
 				UnloadScene(UI);
 				break;
 		}
+		uiLoaded = false;
 		UnloadScene(UI);
+	}
 
-		LoadScene("POVScene", true);
+	bool uiLoaded;
+
+	private void Update()
+	{
+		if (!SceneManager.GetSceneByName("MainMenuScene").isLoaded)
+		{
+
+			if (!SceneManager.GetSceneByName("DrawingScene").isLoaded) 
+			{
+				// pulling up journal
+				if (Input.GetButtonDown("Jump"))
+				{
+					if (!uiLoaded)
+					{
+						Player.GetComponent<PlayerControls>().DisablePlayerControls();
+
+						POVManager.SetActive(false);
+						GameManager.LoadScene("JournalScene", true);
+
+						uiLoaded = true;
+					}
+				}
+			}
+		}
+
+		if (POVManager == null)
+		{
+			POVManager = GameObject.Find("POVManager");
+		}
+		if (Player == null)
+		{
+			Player = GameObject.Find("Player");
+		}
 	}
 
 	#endregion
