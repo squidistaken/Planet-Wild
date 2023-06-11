@@ -32,6 +32,7 @@ public class Slideshow : MonoBehaviour
     void Start()
     {
         currentImage = 0;
+        GameManager.LoadScene("ManagerScene", true);
     }
 
     // Update is called once per frame
@@ -39,13 +40,16 @@ public class Slideshow : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || (Input.GetKey(KeyCode.Space)))
         {
-            currentImage++;
+			FindObjectOfType<AudioManager>().PlayAudio("OpenJournal");
+			currentImage++;
 
             if (currentImage >= imageArray.Length)
             {
-                //Go to next scene
-                SceneManager.LoadScene("TutorialScene");
-            }
+				//Go to next scene
+				GameManager.LoadScene("TutorialScene", false);
+				GameManager.LoadScene("ManagerScene", true);
+				GameManager.LoadScene("POVScene", true);
+			}
         }
     }
 }

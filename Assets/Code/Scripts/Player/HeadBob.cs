@@ -18,12 +18,17 @@ public class HeadBob : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) //Player is moving
         {
             timer += Time.deltaTime * walkingBobbingSpeed;
             transform.localPosition = new Vector3(transform.localPosition.x, defaultYPosition + Mathf.Sin(timer) * bobbingAmount, transform.localPosition.z);
-        }
+            if (timer >= 16)
+            {
+                FindObjectOfType<AudioManager>().PlayAudio("PlayerWalk");
+                timer = 0;
+            }
+		}
 
         else //Idle
         {
