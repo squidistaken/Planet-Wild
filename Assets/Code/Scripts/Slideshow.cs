@@ -43,9 +43,11 @@ public class Slideshow : MonoBehaviour
 
             if (currentImage >= imageArray.Length)
             {
-                //Go to next scene
-                SceneManager.LoadScene("TutorialScene");
-            }
+				//Go to next scene
+				GameManager.LoadScene("TutorialScene", false);
+				GameManager.LoadScene("ManagerScene", true);
+				GameManager.LoadScene("POVScene", true);
+			}
         }
     }
 }

@@ -51,11 +51,7 @@ public class MenuManager : MonoBehaviour
 
 	public void PlayGame()
 	{
-		GameManager.LoadScene("TutorialScene", false);
-
-		GameManager.LoadScene("ManagerScene", true);
-		GameManager.LoadScene("POVScene", true);
-		GameManager.UnloadScene("MainMenuScene");
+		GameManager.LoadScene("SlidesScene", false);
 	}
 
 	#endregion
