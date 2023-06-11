@@ -30,25 +30,29 @@ public class PlayerInteract : MonoBehaviour
     public float dropForwardForce = 1f;
     public float dropUpForce = 1f;
 
-    private GameManager gameManager;
+    private POVManager povManager;
+
+    public LayerMask layerMask;
 
 	private void Start()
 	{
-		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        povManager = GameObject.Find("POVManager").GetComponent<POVManager>();
 	}
 
 	// Update is called once per frame
 	void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !IsInteracting)
-        {
-            // Ray = Infinite light starting at origin and going in some direction.
-            // Ray is created from interactor source position and is forward.
-            Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+		povManager.EditCrosshair(crosshairType.normal);
 
-            // If the raycast hits an object
-            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-            {
+		Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+
+		// If the raycast hits an object
+		if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange, layerMask))
+        {
+			povManager.EditCrosshair(crosshairType.interact);
+
+			if (Input.GetMouseButtonDown(0) && !IsInteracting)
+				{
                 //Credit: Marcus               
                 // Collision attempt
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj) && !IsHoldingItem)

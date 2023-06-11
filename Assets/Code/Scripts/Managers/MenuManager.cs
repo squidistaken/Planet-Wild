@@ -15,13 +15,19 @@ public class MenuManager : MonoBehaviour
 	}
 
 	#region General
+
+	// in reflection we could've just thrown the bool here lmao
 	private void Update()
 	{
-		if (!SceneManager.GetSceneByName("DrawingScene").isLoaded || !SceneManager.GetSceneByName("MainMenuScene").isLoaded)
+		if (!SceneManager.GetSceneByName("MainMenuScene").isLoaded) 
 		{
-			if (Input.GetButtonDown("Jump"))
+			// You can't do a logical or statement for multiple scene loads???
+			if (!SceneManager.GetSceneByName("DrawingScene").isLoaded)
 			{
-				gameManager.UnloadUI(gameObject.scene.name);
+				if (Input.GetButtonDown("Jump"))
+				{
+					gameManager.UnloadUI(gameObject.scene.name);
+				}
 			}
 		}
 	}
@@ -84,7 +90,6 @@ public class MenuManager : MonoBehaviour
 	public void LoadRegion(string regionName)
 	{
 		GameManager.LoadScene(regionName, false);
-
 		GameManager.LoadScene("ManagerScene", true);
 		GameManager.LoadScene("POVScene", true);
 		GameManager.UnloadScene("RegionSelectScene");
