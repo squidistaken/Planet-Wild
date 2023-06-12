@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
 	public void GoBackToMenu()
 	{
 		FindObjectOfType<AudioManager>().PlayAudio("CloseJournal");
-		GameManager.LoadUI("JournalScene", gameObject.scene.ToString());
+		GameManager.LoadUI("JournalScene", gameObject.scene.name);
 	}
 
 	public void CloseGame()
