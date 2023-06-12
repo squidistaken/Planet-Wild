@@ -6,7 +6,7 @@ public class RoeDeerInteraction : MonoBehaviour, IInteractable
 {
 	GameManager gameManager;
 
-	string animalName = "RoeDeer";
+	string animalName = "Deer";
 
 	public void Interact()
 	{
