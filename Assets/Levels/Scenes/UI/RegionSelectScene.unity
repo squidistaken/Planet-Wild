@@ -642,7 +642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 24569676930030563, guid: 35e16a74c7a6cae4684a1b0096a18fa6, type: 3}
       propertyPath: m_text
-      value: Heather
+      value: Heide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e16a74c7a6cae4684a1b0096a18fa6, type: 3}
@@ -787,9 +787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 24569676930030563, guid: 35e16a74c7a6cae4684a1b0096a18fa6, type: 3}
       propertyPath: m_text
-      value: 'Coast
-
-'
+      value: Strand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e16a74c7a6cae4684a1b0096a18fa6, type: 3}
@@ -851,7 +849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick a region
+  m_text: 'Reis Naar... '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1064,6 +1062,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 24569676930030563, guid: 35e16a74c7a6cae4684a1b0096a18fa6, type: 3}
+      propertyPath: m_text
+      value: Bos
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e16a74c7a6cae4684a1b0096a18fa6, type: 3}
 --- !u!95 &558108602526756981
@@ -1168,8 +1170,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RegionSelectManager, Assembly-CSharp
+      - m_Target: {fileID: 1025903515}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: GoBackToMenu
         m_Mode: 1
         m_Arguments:
@@ -1213,6 +1215,7 @@ GameObject:
   - component: {fileID: 8229337556499330580}
   - component: {fileID: 8229337556499330581}
   - component: {fileID: 558108602526756981}
+  - component: {fileID: 8229337556499330584}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1220,3 +1223,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8229337556499330584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229337556499330583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67522d03955fee4d939f501e3f7d43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

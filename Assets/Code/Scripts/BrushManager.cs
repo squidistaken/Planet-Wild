@@ -118,8 +118,18 @@ public class BrushManager : MonoBehaviour
 	public void UnloadDrawingUI()
 	{
 		FindObjectOfType<AudioManager>().PlayAudio("CloseJournal");
-		gameManager.UnloadUI("DrawingScene");
-
 		selectedAnimal = null;
+
+		if (SceneManager.GetSceneByName("TutorialScene").isLoaded)
+		{
+			GameManager.LoadScene("RegionSelectScene", true);
+		}
+
+		else
+		{
+			gameManager.UnloadUI("DrawingScene");
+		}
+
+		
 	}
 }
