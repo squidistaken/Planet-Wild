@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 92698522}
   - component: {fileID: 92698521}
   m_Layer: 0
-  m_Name: EventManager
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 243804739}
   - component: {fileID: 243804738}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,15 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: OpenJournal
-    audioClip: {fileID: 8300000, guid: 9868e47f4d070e94a8b897217d1fb054, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    spatialBlend: 0
   - name: CloseJournal
     audioClip: {fileID: 8300000, guid: 3f65e4d608245ff4f96067e7e09ecefd, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
     spatialBlend: 0
@@ -245,16 +239,22 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     spatialBlend: 1
-  - name: PlayerWalk
-    audioClip: {fileID: 8300000, guid: c1342d2902ef4c74ca610d364cf539db, type: 3}
-    volume: 0.1
-    pitch: 0.8
+  - name: OpenJournal
+    audioClip: {fileID: 8300000, guid: 9868e47f4d070e94a8b897217d1fb054, type: 3}
+    volume: 0.6
+    pitch: 1
     loop: 0
     spatialBlend: 0
   - name: OptionSelect
     audioClip: {fileID: 8300000, guid: 95d114fe774c7aa4d811ea70a98d2088, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
+    loop: 0
+    spatialBlend: 0
+  - name: PlayerWalk
+    audioClip: {fileID: 8300000, guid: c1342d2902ef4c74ca610d364cf539db, type: 3}
+    volume: 0.05
+    pitch: 0.9
     loop: 0
     spatialBlend: 0
 --- !u!4 &243804739

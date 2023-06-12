@@ -80,6 +80,9 @@ public class POVManager : MonoBehaviour
 	void CompleteTask(string animalName)
 	{
 		checklist = GameObject.Find(animalName).GetComponent<TMP_Text>();
+
+		Debug.Log(checklist);
+
 		checklist.fontStyle = FontStyles.Strikethrough;
 
 		checklist.ForceMeshUpdate(true);
