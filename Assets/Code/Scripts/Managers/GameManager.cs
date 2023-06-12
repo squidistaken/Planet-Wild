@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
 	#region Scene Manager
 	
-	private static bool gameStarted = true;
+	private static bool gameStarted = false;
 	private void Awake()
 	{		
 		if (!gameStarted)
